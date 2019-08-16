@@ -4,6 +4,7 @@ import com.vytrack.utilities.BasePage;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -218,5 +219,9 @@ public class CalendarEventsPage extends BasePage {
 
     public String getEndTime() {
         return endTime.getAttribute("value");
+    }
+
+    public void nothing(){
+
     }
 }
