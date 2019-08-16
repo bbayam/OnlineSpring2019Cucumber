@@ -219,4 +219,9 @@ public class CalendarEventsPage extends BasePage {
     public String getEndTime() {
         return endTime.getAttribute("value");
     }
+
+    public void nothing(){
+
+    }
 }
+
