@@ -220,8 +220,6 @@ public class CalendarEventsPage extends BasePage {
         return endTime.getAttribute("value");
     }
 
-    public void nothing(){
 
-    }
 }
 
