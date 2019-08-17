@@ -1,7 +1,10 @@
 package com.vytrack.runners;
+
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
+
 
 
 @RunWith(Cucumber.class)
@@ -11,7 +14,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",
                 "html:target/default-cucumber-reports"
         },
-        tags = {"@create_a_car_with_list_of_maps"},
+//        tags = {"@navigation"},
         features = {"src/test/resources/features" //to specify where are the features
         },
         //feature contains scenarios
@@ -22,8 +25,6 @@ import org.junit.runner.RunWith;
         //you will see them in the console output
         dryRun = false
 
-
 )
 public class CukesRunner {
-
 }

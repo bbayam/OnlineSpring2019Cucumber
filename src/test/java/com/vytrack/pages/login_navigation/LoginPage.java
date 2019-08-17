@@ -9,9 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    public LoginPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
+    public LoginPage(){PageFactory.initElements( Driver.getDriver(), this);}
 
     @FindBy(id = "prependedInput")
     @CacheLookup
@@ -21,7 +19,7 @@ public class LoginPage {
     @CacheLookup
     public WebElement passwordElement;
 
-    @FindBy(id = "_submit")
+    @FindBy(id="_submit")
     public WebElement loginButtonElement;
 
     @FindBy(className = "custom-checkbox__icon")
@@ -37,20 +35,19 @@ public class LoginPage {
     public WebElement errorMessageElement;
 
 
-    public void login(String username, String password) {
+    public void login(String username, String password){
         userNameElement.sendKeys(username);
         passwordElement.sendKeys(password);
         loginButtonElement.click();
     }
 
-    public void login() {
+    public void login(){
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
         userNameElement.sendKeys(username);
         passwordElement.sendKeys(password);
         loginButtonElement.click();
     }
-
 
     public void login(String role) {
         String username = "";
@@ -70,19 +67,17 @@ public class LoginPage {
         loginButtonElement.click();
     }
 
-    public String getErrorMessage() {
+    public String getErrorMessage(){
         return errorMessageElement.getText();
     }
 
-    public void clickRememberMe() {
-        BrowserUtils.waitForClickablility(rememberMeElement, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-        if (!rememberMeElement.isSelected()) {
+    public void clickRememberMe(){
+        BrowserUtils.waitForClickablility(rememberMeElement, Integer.valueOf( ConfigurationReader.getProperty("SHORT_WAIT")));
+        if(!rememberMeElement.isSelected()){
             rememberMeElement.click();
         }
     }
-
-
-    public void goToLandingPage() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url" + ConfigurationReader.getProperty("environment")));
+    public void goToLandingPage(){
+        Driver.getDriver().get( ConfigurationReader.getProperty( "url"+ConfigurationReader.getProperty( "environment" ) ) );
     }
 }
