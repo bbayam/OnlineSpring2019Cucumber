@@ -8,4 +8,4 @@ Feature: Vehicles
     When user logs in as a "driver"
     Then user navigates to "Fleet" and "Vehicles"
     And user verifies that "Cars" page name is displayed
-    And user verifies that default page number is 1
+    And user verifies that default page number is 1 verifies that default page number is 1
