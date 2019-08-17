@@ -28,7 +28,7 @@ public class CalendarEventsPage extends BasePage {
     @FindBy(css = "a[title='Reset']")
     public WebElement resetBtnElement;
 
-    @FindBy(css = "thead:nth-of-type(1) span[class='grid-header-cell__label']")
+    @FindBy(css = "[class='grid-header-cell__label']")
     public List<WebElement> headers;
 
     @FindBy(css = "[id^='date_selector_oro_calendar_event_form_start']")
@@ -167,7 +167,7 @@ public class CalendarEventsPage extends BasePage {
         waitUntilLoaderScreenDisappear();
         String startTimeToSelect = "(//li[text()='" + time + "'])[1]";
         startTime.click();
-        new WebDriverWait( Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
+        new WebDriverWait(Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
         Driver.getDriver().findElement(By.xpath(startTimeToSelect)).click();
     }
 
@@ -175,7 +175,7 @@ public class CalendarEventsPage extends BasePage {
         waitUntilLoaderScreenDisappear();
         String startTimeToSelect = "(//li[text()='" + time + "'])[1]";
         startTime.click();
-        new WebDriverWait( Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
+        new WebDriverWait(Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
         Driver.getDriver().findElement(By.xpath(startTimeToSelect)).click();
     }
 
@@ -189,7 +189,7 @@ public class CalendarEventsPage extends BasePage {
     public long differenceBetweenStartTimeAndEndTime() {
         LocalTime actualStartTime = LocalTime.parse(startTime.getAttribute("value"), DateTimeFormatter.ofPattern("h:mm a"));
         try {
-            new WebDriverWait( Driver.getDriver(), 3).until(ExpectedConditions.invisibilityOf(startTime));
+            new WebDriverWait(Driver.getDriver(), 3).until(ExpectedConditions.invisibilityOf(startTime));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -200,7 +200,7 @@ public class CalendarEventsPage extends BasePage {
     public void clickOnCreateCalendarEvent() {
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForStaleElement(createCalendarEventBtn);
-        BrowserUtils.waitForClickablility(createCalendarEventBtn, Integer.valueOf( ConfigurationReader.getProperty("SHORT_WAIT")));
+        BrowserUtils.waitForClickablility(createCalendarEventBtn, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         createCalendarEventBtn.click();
     }
 
@@ -220,11 +220,9 @@ public class CalendarEventsPage extends BasePage {
         return endTime.getAttribute("value");
     }
 
-    public List<String> getTableHeaders(){
-        return BrowserUtils.getElementsText( headers );
-
+    public List<String> getTableHeaders() {
+        BrowserUtils.waitForStaleElement(createCalendarEventBtn);
+        return BrowserUtils.getElementsText(headers);
     }
 
-
 }
-
